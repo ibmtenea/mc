@@ -1,0 +1,248 @@
+
+<app-header></app-header>
+<ngx-spinner></ngx-spinner>
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 mt-5">
+            <div class="tabbable" id="tabs-850675">
+	            <app-botonestab></app-botonestab>			
+				<div class="tab-content p-5">
+					<div class="tab-pane active" id="panel-813817">
+                        <!-- <mat-tab-group
+                        (selectedTabChange)="handleMatTabChange($event)"
+                        >
+                            <mat-tab label="R4B">
+                                <app-r4b></app-r4b> 
+                            </mat-tab>
+                            <mat-tab label="Controles Batch">
+                                <app-controlesbatch></app-controlesbatch> 
+                            </mat-tab>
+                            <mat-tab label="Resumen">
+                                 <app-resumen></app-resumen> 
+                            </mat-tab>
+                        </mat-tab-group>  -->
+
+
+                            <div class="row">
+                              <div class="col-10 p-0 mt-5">
+                                <h2>Info inventario</h2>
+                              </div>
+                              <div class="col-2 p-0 mt-5">
+                                
+                              </div>
+                            </div>
+                          
+                            <div class="row">
+                              <div class="col-9 text-right p-0 mt-2">
+                                <!-- <a
+                                  alt="Nuevo registro"
+                                  title="nuevo registro"
+                                  [routerLink]="['/', 'alta']"
+                                  class="btn btn-info pt4 btn-circle posicionplus"
+                                  ><i class="fa fa-plus fa-3"></i
+                                ></a> -->
+                              </div>
+                              <div class="col-3 p-0 mt-2 text-right">
+                                <div class="form">
+                                  <mat-form-field floatPlaceholder="never" color="accent">
+                                    <input matInput placeholder="Buscar" (keyup)="updateFilter($event)" />
+                                  </mat-form-field>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <div class="row">
+                              <div class="col-12 p-0 m-0">
+                                <ngx-datatable
+                                  #mydatatable
+                                  class="material striped"
+                                  headerHeight="50"
+                                  [limit]="25"
+                                  [columnMode]="'force'"
+                                  footerHeight="50"
+                                  rowHeight="50"
+                                  [rows]="rows"
+                                  [messages]="my_messages"
+                                >
+                                   <ngx-datatable-column name="id_inventario" [maxWidth]="90">
+                                    <ng-template ngx-datatable-header-template>
+                                      <span>ID </span>
+                                    </ng-template>
+                                    <ng-template
+                                      class="mat-column-id"
+                                      ngx-datatable-cell-template
+                                      let-rowIndex="rowIndex"
+                                      let-value="value"
+                                      let-row="row"
+                                      ><div class="text-center">{{ row.id_inventario }}</div>
+                                    </ng-template>
+                                  </ngx-datatable-column> 
+                          
+
+                                  <ngx-datatable-column name="_hostname" [maxWidth]="230" prop="_hostname">
+                               
+                                    <ng-template
+                                      ngx-datatable-cell-template
+                                      let-rowIndex="rowIndex"
+                                      let-value="value"
+                                      let-row="row"
+                                    >
+
+<span *ngIf="user.id_rol=='8'">
+
+                                      <span title="Doble click para editar"
+                                        (dblclick)="editing[rowIndex + '-_hostname'] = true"
+                                        *ngIf="!editing[rowIndex + '-_hostname']"
+                                      >{{ row._hostname}}
+                                        <span class="text-muted2" *ngIf="row._hostname === null"> vacío &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                      </span>
+</span>
+<span *ngIf="user.id_rol!='8'">{{ row._hostname}}</span>
+
+                                      <input
+                                        autofocus
+                                        (clickOutside)="editing[rowIndex + '-_hostname'] = false"
+                                        (keyup.enter)="updateValue($event, '_hostname', rowIndex)"
+                                        *ngIf="editing[rowIndex + '-_hostname']"
+                                        type="text"
+                                        class="form-control"
+                                        [value]="row._hostname"
+                                        [title]="row.id_inventario"
+                                      />
+                                    </ng-template>
+                                  </ngx-datatable-column>              
+                                  <ngx-datatable-column name="DOMAIN" [maxWidth]="650"   prop="DOMAIN">
+                        
+                                    <ng-template
+                                      ngx-datatable-cell-template
+                                      let-rowIndex="rowIndex"
+                                      let-value="value"
+                                      let-row="row"
+                                    >
+<span *ngIf="user.id_rol=='8'">                                    
+                                      <span title="Doble click para editar"
+                                        (dblclick)="editing[rowIndex + '-DOMAIN'] = true"
+                                        *ngIf="!editing[rowIndex + '-DOMAIN']"
+                                      >{{ row.DOMAIN}}
+                                        <span class="text-muted2" *ngIf="row.DOMAIN === null"> vacío &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                      </span>
+</span> 
+<span *ngIf="user.id_rol!='8'">{{ row.DOMAIN}}</span>                                      
+                                      <input
+                                        autofocus
+                                        (clickOutside)="editing[rowIndex + '-DOMAIN'] = false"
+                                        (keyup.enter)="updateValue($event, 'DOMAIN', rowIndex)"
+                                        *ngIf="editing[rowIndex + '-DOMAIN']"
+                                        type="text"
+                                        class="form-control"
+                                        [value]="row.DOMAIN"
+                                        [title]="row.id_inventario"
+                                      />
+                                     
+                                    </ng-template>
+                                  </ngx-datatable-column>  
+                                  <ngx-datatable-column name="SUBSYSTEM" [maxWidth]="690"  prop="SUBSYSTEM">
+                
+                                    <ng-template
+                                      ngx-datatable-cell-template
+                                      let-rowIndex="rowIndex"
+                                      let-value="value"
+                                      let-row="row"
+                                    >
+<span *ngIf="user.id_rol=='8'">                                     
+                                      <span title="Doble click para editar"
+                                        (dblclick)="editing[rowIndex + '-SUBSYSTEM'] = true"
+                                        *ngIf="!editing[rowIndex + '-SUBSYSTEM']"
+                                      >{{ row.SUBSYSTEM}}
+                                        <span class="text-muted2" *ngIf="row.SUBSYSTEM === null"> vacío &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                      </span>
+ </span>
+ <span *ngIf="user.id_rol!='8'">{{ row.SUBSYSTEM}}</span>                                              
+                                      <input
+                                        autofocus
+                                        (clickOutside)="editing[rowIndex + '-SUBSYSTEM'] = false"
+                                        (keyup.enter)="updateValue($event, 'SUBSYSTEM', rowIndex)"
+                                        *ngIf="editing[rowIndex + '-SUBSYSTEM']"
+                                        type="text"
+                                        class="form-control"
+                                        [value]="row.SUBSYSTEM"
+                                        [title]="row.id_inventario"
+                                      />
+                                    </ng-template>
+                                  </ngx-datatable-column>  
+                                 
+
+                        <ngx-datatable-column name="ver" [maxWidth]="150">
+                            <ng-template ngx-datatable-header-template>
+                                <span></span>
+                              </ng-template>
+                                <ng-template
+                                  class="mat-column-id"
+                                  ngx-datatable-cell-template
+                                  let-row="row"
+                                >
+                          
+                                  <div class="text-center">
+                                    <div class="row">
+                                      <div class="col-12 p0 m0">
+                          
+     
+                          <!-- <div *ngIf="registroroleperson.id_rol== '8'"> -->
+                                      <!-- <button (click)="duplicar(row, i)"
+                                      class="btn btn-warning botonsizes mr-1">
+                                          <i class="fa fa-clone"></i>
+                                      </button> -->
+                                      
+                                      <a
+                                        [routerLinkActive]="['active']" 
+                                       
+                                        [routerLink]="['/detalle', row.tokenid]"
+                                        class="btn btn-warning botonsizes mr-1"
+                                        data-toggle="tab"><i class="fa fa-folder-open"></i
+                                      ></a>
+
+                                      <span *ngIf="user.id_rol=='8'"> 
+                                      <button
+                                        (click)="borrarRegistro(row, row.id_inventario)"
+                                        class="btn btn-warning botonsizes ml-2"
+                                      >
+                                        <i class="fa fa-trash"></i>
+                                      </button>
+                                      </span>
+                          <!-- </div>  -->
+                          
+                          
+                                      </div>
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </ngx-datatable-column> 
+                              
+                                </ngx-datatable>
+                              </div>
+                            </div>
+                         
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+                          
+
+
+					</div>
+				</div>
+			</div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>

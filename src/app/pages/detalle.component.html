@@ -1,0 +1,475 @@
+
+<app-header></app-header>
+<ngx-spinner></ngx-spinner>
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 mt-5">
+            <div class="tabbable" id="tabs-850675">
+	            <app-botonestab></app-botonestab>			
+				<div class="tab-content p-5">
+					<div class="tab-pane active" id="panel-813817">
+                        <!-- <mat-tab-group
+                        (selectedTabChange)="handleMatTabChange($event)"
+                        >
+                            <mat-tab label="R4B">
+                                <app-r4b></app-r4b> 
+                            </mat-tab>
+                            <mat-tab label="Controles Batch">
+                                <app-controlesbatch></app-controlesbatch> 
+                            </mat-tab>
+                            <mat-tab label="Resumen">
+                                 <app-resumen></app-resumen> 
+                            </mat-tab>
+                        </mat-tab-group>  -->
+
+
+                            <div class="row">
+                              <div class="col-10 p-0 mt-5">
+                                <h2>Hostname: {{registro._hostname}}</h2>
+                              </div>
+                              <div class="col-2 p-0 mt-5">
+                                
+                              </div>
+                            </div>
+                          
+                            <div class="row mb-5">
+                              <div class="col-12 text-right p-0 mt-2">
+                                <nav>
+                                  <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                      <a [routerLink]="['/home']">Inicio</a>
+                                    </li>
+
+                                    <li class="breadcrumb-item active">
+                                        #{{registro.id_inventario}}
+                                    </li>
+                                  </ol>
+                                </nav>
+                              </div>
+                            </div>
+                          
+                       
+
+
+            <form (ngSubmit)="onSubmit()" [formGroup]="formularioInventario">
+
+                <input type="hidden"  formControlName="id_inventario">
+                <input type="hidden"  formControlName="tokenid">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>Hostname:</b>  {{registro._hostname}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="Hostname" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="_hostname">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>Timestamp:</b>  {{registro._timestamp}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="Timestamp" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="_timestamp">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>Session ID:</b> {{registro._session_ID}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="Session ID" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="_session_ID">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>Infotype:</b>  {{registro._infotype}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="Infotype" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="_infotype">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>Key:</b>  {{registro._key}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="Key" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="_key">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>FQDN:</b> {{registro.FQDN}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="FQDN" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="FQDN">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>DOMAIN:</b>  {{registro.DOMAIN}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="DOMAIN" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="DOMAIN">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>OS VERSION:</b>  {{registro.OS_VERSION}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="OS VERSION" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="OS_VERSION">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>OS KERNEL:</b> {{registro.OS_KERNEL}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="OS KERNEL" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="OS_KERNEL">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>OS ARCHITECTURE:</b>  {{registro.OS_ARCHITECTURE}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="OS_ARCHITECTURE" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="OS_ARCHITECTURE">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>SYS VENDOR:</b>  {{registro.SYS_VENDOR}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="SYS VENDOR" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="SYS_VENDOR">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>SYSPRODUCTNAME:</b> {{registro.SYS_PRODUCT_NAME}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="SYS PRODUCT NAME" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="SYS_PRODUCT_NAME">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>SYS PRODUCT VERSION:</b>  {{registro.SYS_PRODUCT_VERSION}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="SYS PRODUCT VERSION" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="SYS_PRODUCT_VERSION">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>CPU NUMBERS:</b>  {{registro.CPU_NUMBERS}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="CPU NUMBERS" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="CPU_NUMBERS">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>CPU MODEL:</b> {{registro.CPU_MODEL}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="CPU MODEL" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="CPU_MODEL">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>CPU SPEED:</b>  {{registro.CPU_SPEED}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="CPU SPEED" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="CPU_SPEED">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>CPU CORES:</b>  {{registro.CPU_CORES}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="CPU CORES" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="CPU_CORES">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>CPU THREADS:</b> {{registro.CPU_THREADS}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="CPU THREADS" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="CPU_THREADS">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <b>IP LIST:</b>  {{registro.IP_LIST}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="IP LIST" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="IP_LIST">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <b>MAC LIST:</b>  {{registro.MAC_LIST}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="MAC LIST" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="MAC_LIST">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <b>MEM TOTAL:</b> {{registro.MEM_TOTAL}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="MEM TOTAL" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="MEM_TOTAL">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-6">
+                        <b>UPTIME TIMESTAMP:</b>  {{registro.UPTIME_TIMESTAMP}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="UPTIME TIMESTAMP" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="UPTIME_TIMESTAMP">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>UPTIME DAYS:</b>  {{registro.UPTIME_DAYS}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="UPTIME DAYS" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="UPTIME_DAYS">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>DISK LIST:</b> {{registro.DISK_LIST}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="DISK LIST" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="DISK_LIST">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>LAST FIX:</b>  {{registro.LAST_FIX}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="LAST FIX" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="LAST_FIX">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <b>SERIAL NUM:</b>  {{registro.SERIAL_NUM}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="SERIAL NUM" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="SERIAL_NUM">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                    <div class="col-md-4">
+                        <b>ROLE:</b> {{registro.ROLE}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="ROLE" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="ROLE">
+                        </span>   
+                        <hr class="linear" />
+                    </div>
+                    <div class="col-md-4">
+                        <b>SUBSYSTEM:</b>  {{registro.SUBSYSTEM}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="SUBSYSTEM" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="SUBSYSTEM">
+                        </span>
+                        <hr class="linear" />
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <b>INTERPRETERS:</b>  {{registro.INTERPRETERS}}
+                        <span *ngIf="user.id_rol=='8'">
+                            <input type="text"
+                            placeholder="INTERPRETERS" 
+                            autocomplete="off" 
+                            class="form-control input-sm mb-3"
+                            value=""
+                            formControlName="INTERPRETERS">
+                        </span>
+                        <hr class="linear" />   
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button  *ngIf="user.id_rol=='8'"
+                        [disabled]="formularioInventario.invalid" 
+                        class="btn btn-info mr-2">
+                        Guardar
+                        </button>  
+
+                        <button  
+                        [routerLink]="['/home']"
+                        class="btn btn-info">
+                        Volver
+                        </button>  
+
+                    </div>
+                </div>
+            </form>
+
+
+					</div>
+				</div>
+			</div>
+        </div>
+      </div>
+</div>
+<app-footer></app-footer>

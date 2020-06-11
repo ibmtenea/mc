@@ -1,0 +1,20 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [routerLinkActive]="['active']" class="nav-link" [routerLink]="['/', 'home']"  data-toggle="tab">Inventario Info</a>
+    </li>
+    <!-- <li class="nav-item">
+        <a [routerLinkActive]="['active']" class="nav-link"   [routerLink]="['/', 'incidencias']" data-toggle="tab">Incidencias DEFCON</a>
+    </li>
+    <li class="nav-item">
+        <a [routerLinkActive]="['active']"  class="nav-link"  [routerLink]="['/', 'cambios']" data-toggle="tab">Cambios</a>
+    </li>
+    <li class="nav-item">
+        <a [routerLinkActive]="['active']"  class="nav-link"  [routerLink]="['/', 'pendientes']" data-toggle="tab">Temas Pendientes</a>
+    </li>
+    <li *ngIf="user.id_rol=='8'" class="nav-item">
+        <a [routerLinkActive]="['active']"  class="nav-link navmodificado"  [routerLink]="['/', 'reporteglobal']" data-toggle="tab">Bitácora de seguimiento</a>
+    </li> -->
+    <li *ngIf="user.id_rol=='8'" class="nav-item">
+        <a [routerLinkActive]="['active']"  class="nav-link navmodificado2"  [routerLink]="['/', 'administracion']" data-toggle="tab">Administración</a>
+    </li>
+</ul>
